@@ -9,7 +9,6 @@ public class TileScript : MonoBehaviour
 
     private void Awake()
     {
-        Debug.Log("started");
     }
     void Update()
     {
