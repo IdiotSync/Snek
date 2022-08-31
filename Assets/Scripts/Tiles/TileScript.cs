@@ -13,7 +13,5 @@ public class TileScript : MonoBehaviour
     }
     void Update()
     {
-
-        Debug.Log("started");
     }
 }
