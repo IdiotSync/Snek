@@ -15,9 +15,6 @@ public class PlayerScript : MonoBehaviour
     }
     public void setPosition(Vector2 Position)
     {
-        Debug.Log("set " + Position);
-        Debug.Log(gameManager);
-        Debug.Log(gameManager.tilesMap);
         rowIndex = gameManager.tilesMap.WorldToCell(Position).x;
         colIndex = gameManager.tilesMap.WorldToCell(Position).y;
     }

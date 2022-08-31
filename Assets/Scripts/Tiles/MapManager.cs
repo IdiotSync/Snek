@@ -42,7 +42,9 @@ public class MapManager : MonoBehaviour
                     Vector2 newPos = new Vector2(x, y);
                     GameObject newTile = Instantiate(tilesDic[cell].prefab, newPos, Quaternion.identity);
                     newTile.transform.parent = tilesFolder.transform;
-                    newTile.name = "["+x+","+y+"] " + tilesDic[cell].prefabName;
+                    newTile.name = "[" + x + "," + y + "] " + tilesDic[cell].prefabName;
+                    newTile.GetComponent<TileScript>().gameManager = gameManager;
+                    newTile.GetComponent<TileScript>().tileSO = tilesDic[cell];
                     tilesObjs.Add(newTile);
                     if (tilesDic[cell].prefabName == "Spawner")
                     {
@@ -51,16 +53,5 @@ public class MapManager : MonoBehaviour
                 }
             }
         }
-    }
-
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-
-
-    }
-    void OnTriggerEnter2D(Collider2D col)
-    {
-        Debug.Log(col.gameObject.name + " : " + gameObject.name + " : " + Time.time);
     }
 }

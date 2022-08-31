@@ -20,8 +20,6 @@ public class ControlsScript : MonoBehaviour
 
     private bool validTarget(direction dir)
     {
-        Debug.Log(dir);
-        Debug.Log(playerScript.rowIndex + " / " + playerScript.colIndex);
         switch (dir)
         {
             case direction.LEFT:

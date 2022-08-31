@@ -203,7 +203,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef63e301aaafeaa43b61ddbdba1807e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilesMap: {fileID: 1633459036}
 --- !u!114 &477045582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,7 +216,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSO: {fileID: 11400000, guid: 5c9913ecc23e9cb40a66bf4e6c5afbf2, type: 2}
-  gameManager: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -315,7 +313,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef63e301aaafeaa43b61ddbdba1807e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilesMap: {fileID: 1633459036}
 --- !u!1 &1633459033 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 565621808294106267, guid: 1a9d75d926976b046ad557a8cae31c24, type: 3}
@@ -439,19 +436,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 565621808294106270, guid: 1a9d75d926976b046ad557a8cae31c24, type: 3}
       propertyPath: m_Size.x
-      value: 17
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 565621808294106270, guid: 1a9d75d926976b046ad557a8cae31c24, type: 3}
       propertyPath: m_Size.y
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 565621808294106270, guid: 1a9d75d926976b046ad557a8cae31c24, type: 3}
       propertyPath: m_Origin.x
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 565621808294106270, guid: 1a9d75d926976b046ad557a8cae31c24, type: 3}
       propertyPath: m_Origin.y
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 565621808294106270, guid: 1a9d75d926976b046ad557a8cae31c24, type: 3}
       propertyPath: m_TileAnchor.x

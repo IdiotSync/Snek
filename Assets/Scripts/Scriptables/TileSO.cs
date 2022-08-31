@@ -8,4 +8,5 @@ public class TileSO : ScriptableObject
     public string prefabName;
     public string type;
     public TileBase[] tiles;
+    public float speed;
 } 
