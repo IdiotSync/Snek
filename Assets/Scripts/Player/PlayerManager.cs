@@ -19,19 +19,12 @@ public class PlayerManager : MonoBehaviour
     {
         mainPlayer = Instantiate(playerSO.prefab, initPos, Quaternion.identity);
         mainPlayer.name = playerSO.prefabName;
-        setObjectsManager();
-        playerScript.setPosition(initPos);
+        PlayerScript playerScript = mainPlayer.GetComponent<PlayerScript>();
+        playerScript.initPlayer(gameManager, playerSO, initPos);
+        mainPlayer.GetComponent<ControlsScript>().initControl(gameManager, playerScript);
     }
     public GameObject GetMainPlayer()
     {
         return mainPlayer;
-    }
-    private void setObjectsManager()
-    {
-        playerScript = mainPlayer.GetComponent<PlayerScript>();
-        controlScript = mainPlayer.GetComponent<ControlsScript>();
-        playerScript.gameManager = gameManager;
-        controlScript.gameManager = gameManager;
-        return;
     }
 }

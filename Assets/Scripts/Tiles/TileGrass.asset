@@ -17,3 +17,4 @@ MonoBehaviour:
   type: grass
   tiles:
   - {fileID: 11400000, guid: eab7b57ff7bf616479907d80e719c2fd, type: 2}
+  speed: 10

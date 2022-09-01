@@ -24,4 +24,8 @@ public class GameManager : MonoBehaviour
         playerManager.SpawnPlayer(mapManager.spawners[0]);
         cameraManager.SetCamera(playerManager.GetMainPlayer());
     }
+    public MapManager getMapManager()
+    {
+        return mapManager;
+    }
 }

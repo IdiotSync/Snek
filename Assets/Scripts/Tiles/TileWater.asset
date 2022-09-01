@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4f833125b1e11cd40ae8bac0ac2ba56c, type: 3}
-  m_Name: TileDirt
+  m_Name: TileWater
   m_EditorClassIdentifier: 
   prefab: {fileID: 2251589385034731086, guid: f402f69a1d40f67459b5ff3bd9475c0b, type: 3}
-  prefabName: Dirt
-  type: dirt
+  prefabName: Water
+  type: water
   tiles:
-  - {fileID: 11400000, guid: 8d7e2e8ec7dc46546a1dd9bd72dfc4a0, type: 2}
-  speed: 1
+  - {fileID: 11400000, guid: 806601983085f5c46b5e31f247c4ea67, type: 2}
+  speed: 0.5

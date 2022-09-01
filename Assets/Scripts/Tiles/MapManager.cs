@@ -27,6 +27,11 @@ public class MapManager : MonoBehaviour
                 tilesDic.Add(tileBase, tileSO);
             }
     }
+
+    public Dictionary<TileBase, TileSO> getTilesDic()
+    {
+        return tilesDic;
+    }
     public void SpawnMap()
     {
         BoundsInt bounds = gameManager.tilesMap.cellBounds;
@@ -39,12 +44,11 @@ public class MapManager : MonoBehaviour
                 TileBase cell = tilesCells[x + y * bounds.size.x];
                 if (cell != null)
                 {
-                    Vector2 newPos = new Vector2(x, y);
-                    GameObject newTile = Instantiate(tilesDic[cell].prefab, newPos, Quaternion.identity);
+                    Vector2 initPos = new Vector2(x, y);
+                    GameObject newTile = Instantiate(tilesDic[cell].prefab, initPos, Quaternion.identity);
                     newTile.transform.parent = tilesFolder.transform;
                     newTile.name = "[" + x + "," + y + "] " + tilesDic[cell].prefabName;
-                    newTile.GetComponent<TileScript>().gameManager = gameManager;
-                    newTile.GetComponent<TileScript>().tileSO = tilesDic[cell];
+                    newTile.GetComponent<TileScript>().initTile(gameManager, initPos, tilesDic[cell], cell);
                     tilesObjs.Add(newTile);
                     if (tilesDic[cell].prefabName == "Spawner")
                     {

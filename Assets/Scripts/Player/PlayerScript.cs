@@ -8,10 +8,15 @@ public class PlayerScript : MonoBehaviour
     public int rowIndex;
     public int colIndex;
     public GameManager gameManager;
+    private PlayerSO playerSO;
 
-    public void Awake()
+    public void initPlayer(GameManager sourceGameManager, PlayerSO sourcePlayerSO, Vector2 initPos)
     {
-        gameManager = gameObject.GetComponent<GameManager>();
+        gameManager = sourceGameManager;
+        playerSO = sourcePlayerSO;
+        rowIndex = (int) initPos.x;
+        colIndex = (int) initPos.y;
+        setPosition(new Vector2(rowIndex, colIndex));
     }
     public void setPosition(Vector2 Position)
     {

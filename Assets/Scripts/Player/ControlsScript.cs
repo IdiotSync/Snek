@@ -13,32 +13,58 @@ public class ControlsScript : MonoBehaviour
     private PlayerScript playerScript;
     public GameManager gameManager;
 
-    private void Awake()
+    public void initControl(GameManager sourceGameManager, PlayerScript sourcePlayerScript)
     {
-        playerScript = gameObject.GetComponent<PlayerScript>();
+        gameManager = sourceGameManager;
+        playerScript = sourcePlayerScript;
     }
 
-    private bool validTarget(direction dir)
+    private Vector3Int getNextMove(direction dir)
     {
         switch (dir)
         {
             case direction.LEFT:
-                if (gameManager.tilesMap.GetTile(new Vector3Int(playerScript.rowIndex - 1, playerScript.colIndex)) != null)
-                    return true;
+                return new Vector3Int(playerScript.rowIndex - 1, playerScript.colIndex);
+            case direction.UP:
+                return new Vector3Int(playerScript.rowIndex, playerScript.colIndex + 1);
+            case direction.DOWN:
+                return new Vector3Int(playerScript.rowIndex, playerScript.colIndex - 1);
+            case direction.RIGHT:
+                return new Vector3Int(playerScript.rowIndex + 1, playerScript.colIndex);
+            case direction.NONE:
+                return new Vector3Int(playerScript.rowIndex, playerScript.colIndex);
+            default:
+                return new Vector3Int(0,0);
+        }
+    }
+    private bool validTarget(direction dir)
+    {
+        Dictionary<TileBase, TileSO> tilesDic = gameManager.getMapManager().getTilesDic();
+        Vector3Int nextPosition = getNextMove(dir);
+        TileBase nextTile;
+        switch (dir)
+        {
+            case direction.LEFT:
+                nextTile = gameManager.tilesMap.GetTile(nextPosition);
+                if ((nextTile != null) && (tilesDic[nextTile].type != "rock"))
+                        return true;
                 else
                     return false;
             case direction.UP:
-                if (gameManager.tilesMap.GetTile(new Vector3Int(playerScript.rowIndex, playerScript.colIndex + 1)) != null)
+                nextTile = gameManager.tilesMap.GetTile(nextPosition);
+                if ((nextTile != null) && (tilesDic[nextTile].type != "rock"))
                     return true;
                 else
                     return false;
             case direction.DOWN:
-                if (gameManager.tilesMap.GetTile(new Vector3Int(playerScript.rowIndex, playerScript.colIndex - 1)) != null)
+                nextTile = gameManager.tilesMap.GetTile(nextPosition);
+                if ((nextTile != null) && (tilesDic[nextTile].type != "rock"))
                     return true;
                 else
                     return false;
             case direction.RIGHT:
-                if (gameManager.tilesMap.GetTile(new Vector3Int(playerScript.rowIndex + 1, playerScript.colIndex)) != null)
+                nextTile = gameManager.tilesMap.GetTile(nextPosition);
+                if ((nextTile != null) && (tilesDic[nextTile].type != "rock"))
                     return true;
                 else
                     return false;
@@ -117,6 +143,49 @@ public class ControlsScript : MonoBehaviour
 
         }
         playerScript.setPosition(target);
+        return;
+    }
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "Tile")
+            ApplyTile(col.gameObject.GetComponent<TileScript>().tileSO);
+    }
+
+    void OnTriggerExit2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "Tile")
+            LeaveTile(col.gameObject.GetComponent<TileScript>().tileSO);
+    }
+
+    public void ApplyTile(TileSO tileSO)
+    {
+        switch (tileSO.type)
+        {
+            case "dirt":
+                speed = tileSO.speed;
+                break;
+            case "grass":
+                speed = tileSO.speed;
+                break;
+            case "water":
+                speed = tileSO.speed;
+                break;
+            case "lava":
+                speed = tileSO.speed;
+                break;
+            case "ice":
+                speed = tileSO.speed;
+                break;
+            case "spawner":
+                break;
+            default:
+                break;
+        }
+        return;
+    }
+
+    public void LeaveTile(TileSO tileSO)
+    {
         return;
     }
 }
